@@ -1,0 +1,83 @@
+/* barlow-500 - latin */
+@font-face {
+    font-display: swap; 
+    font-family: 'Barlow';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/barlow-v12-latin-500.woff2') format('woff2'); 
+  }
+/* barlow-900 - latin */
+@font-face {
+    font-display: swap; 
+    font-family: 'Barlow';
+    font-style: normal;
+    font-weight: 900;
+    src: url('../fonts/barlow-v12-latin-900.woff2') format('woff2'); 
+  }
+
+
+@font-face {
+    font-display: swap; 
+    font-family: 'Barlow';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/barlow-v12-latin-700.woff2') format('woff2'); 
+  }
+
+:root{
+    --laranja: hsl(22, 89%, 52%);
+    --laranja-fq: hsl(22, 100%, 69%);
+    --azul: hsl(220, 50%, 17%);
+    --azul-fq: hsl(221, 23%, 58%);
+    --cinza: hsl(198, 28%, 93%);
+    --branco: hsl(0, 0%, 100%);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Barlow', Helvetica, sans-serif;
+    margin: 0;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+}
+
+button {
+    font-family: inherit;
+}
+
+button:hover {
+    cursor: pointer;
+
+}
+
+.button{
+    font-size: 1rem;
+    line-height: 1.625;
+    padding: 16px 26px;
+    border: 0;
+    border-radius: 8px;
+    text-transform: uppercase;
+    transition: 150ms ease-in-out;
+    transition-property: background-color, color;
+
+
+}
+
+.button.blue {
+    background-color: var(--cinza);
+    color: var(--azul);
+}
+
+.button.blue:hover {
+    background-color: var(--azul);
+    color: var(--branco);
+}
