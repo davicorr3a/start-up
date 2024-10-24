@@ -44,6 +44,7 @@ body {
     margin: 0;
     padding-block: 24px;
     min-height: 100vh;
+    color: var(--azul);
 }
 
 @media (width > 28.125em) {
@@ -62,7 +63,21 @@ h1,
 h2,
 h3 {
     margin: 0;
+    font-weight: 900;
+    text-transform: uppercase;
+
 }
+
+h1 {
+    font-size: 3rem;
+
+}
+
+@media (width > 50em) {
+    h1 {
+        font-size: 3.5rem;
+    }
+    }
 
 button {
     font-family: inherit;
