@@ -42,6 +42,20 @@
 body {
     font-family: 'Barlow', Helvetica, sans-serif;
     margin: 0;
+    padding-block: 24px;
+    min-height: 100vh;
+}
+
+@media (width > 28.125em) {
+    body {
+        padding-block: 40px;
+    }
+}
+
+@media (width > 50em) {
+    body {
+        padding-block: 55px;
+    }
 }
 
 h1,
@@ -80,4 +94,26 @@ button:hover {
 .button.blue:hover {
     background-color: var(--azul);
     color: var(--branco);
+}
+
+.grid-main{
+    display: grid;
+    grid-template-columns: 1fr min(100% - 48px, 50rem) 1fr;
+}
+
+@media (width > 28.125em){
+    .grid-main {
+        grid-template-columns: 1fr min(80% - 48px, 50rem) 1fr;  
+    }
+}
+
+.grid-content {
+    grid-column: 2 / 3;
+
+}
+
+.topnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
