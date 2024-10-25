@@ -264,7 +264,7 @@
   }
   
   .features {
-    row-gap: var(--space-med);
+    row-gap: var(--space-lg);
     padding-block-start: var(--space-lg);
   }
   
