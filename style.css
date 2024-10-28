@@ -90,6 +90,14 @@
   p.small {
     font-size: 1rem;
   }
+
+  p.description {
+    font-size: 1.5rem;
+  }
+
+  p.description.small {
+    font-size: 1.2rem;
+  }
   
   p + p {
     margin-top: 1rem;
@@ -170,7 +178,7 @@
       repeat(3, calc((100% - 48px - 20px * 2) / 3))
       4px;
     column-gap: 20px;
-    align-items: center;
+    align-items: center; /*em display grid, essa propriedade sempre afeta na vertical*/
   }
   
   .topnav a {
@@ -224,6 +232,7 @@
   
   .details {
     row-gap: var(--space-med);
+    padding-block-start: var(--space-sm);
   }
   
   .details-image {
@@ -265,7 +274,8 @@
   
   .features {
     row-gap: var(--space-lg);
-    padding-block-start: var(--space-lg);
+    padding-block-start: var(--space-med); /*adiciona preenchimento (espaço interno)
+    no início do bloco em um elemento, no caso, é o espaço antes da seção de features.*/
   }
   
   .feature {
@@ -433,8 +443,8 @@
     }
   
     .details-text {
-      grid-column: 11 / -2;
-      flex-direction: column;
+      grid-column: 10 / -2;
+      flex-direction: column; /*define que os itens serão alinhados verticalmente, no caso a headline e a descrição*/
     }
   
     .feature,
