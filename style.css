@@ -132,7 +132,7 @@
   
   .button.blue {
     background-color: var(--gray-lt);
-    color: var(--blue);
+    color: #044dbb;
   }
   
   .button.blue:hover {
