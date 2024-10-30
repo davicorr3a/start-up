@@ -100,7 +100,7 @@ p.description {
 }
 
 p.description.small {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 p+p {
@@ -257,7 +257,7 @@ picture.flush-right {
   content: '';
   position: absolute;
   inset: 0;
-  background-color: #587eb8;
+  background-color: #1e437a;
   opacity: 0.9;
   mix-blend-mode: multiply;
 }
