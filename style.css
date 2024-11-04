@@ -44,7 +44,8 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box; /*todos os elementos tem o tamanho "verdadeiro".*/
+  box-sizing: border-box;
+  /*todos os elementos tem o tamanho "verdadeiro".*/
 }
 
 body {
@@ -155,7 +156,8 @@ button:hover {
 
 picture {
   border-radius: 20px;
-  overflow: hidden; /*oculta o que ultrapassar as bordas*/
+  overflow: hidden;
+  /*oculta o que ultrapassar as bordas*/
 }
 
 .grid-divisao {
@@ -184,8 +186,10 @@ picture {
 .corpo-texto {
   grid-column: 2 / 8;
   display: grid;
-  grid-template-columns: auto 1fr; /*divide em duas colunas, uma com tamanho automático e a outra com uma fração do espaço disponível*/
-  grid-template-rows: repeat(3, auto); /*divide o grid em 3 linhas, com tamanho adaptativo aos elementos*/
+  grid-template-columns: auto 1fr;
+  /*divide em duas colunas, uma com tamanho automático e a outra com uma fração do espaço disponível*/
+  grid-template-rows: repeat(3, auto);
+  /*divide o grid em 3 linhas, com tamanho adaptativo aos elementos*/
   gap: 32px;
   align-items: center;
 }
@@ -196,7 +200,8 @@ picture {
 
 .corpo-texto .button,
 .corpo-texto .complemento {
-  grid-column: span 1; /*ocupa apenas 1 coluna no grid de corpo-texto*/
+  grid-column: span 1;
+  /*ocupa apenas 1 coluna no grid de corpo-texto*/
 }
 
 .corpo-imagem img {
@@ -256,7 +261,7 @@ picture {
   width: 4.0625rem;
   height: 4.0625rem;
   margin-block-end: 48px;
-  background-color: #0539e4;
+  background-color: #283e88;
   border-radius: 16px;
   display: grid;
   place-items: center;
