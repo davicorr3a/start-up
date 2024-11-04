@@ -32,29 +32,24 @@
 }
 
 :root {
-  --orange: hsl(22, 89%, 52%);
-  --orange-lt: hsl(22, 100%, 69%);
-  --blue: hsl(220, 50%, 17%);
-  --blue-lt: hsl(221, 23%, 58%);
-  --gray-lt: hsl(198, 28%, 93%);
-  --white: hsl(0, 0%, 100%);
-  --space-sm: 24px;
-  --space-med: 64px;
-  --space-lg: 120px;
+  --azul: hsl(220, 50%, 17%);
+  --azul-claro: hsl(221, 23%, 58%);
+  --cinza-claro: hsl(198, 28%, 93%);
+  --branco: hsl(0, 0%, 100%);
+  --espaco-pequeno: 24px;
+  --espaco-medio: 64px;
+  --espaco-grande: 120px;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+  box-sizing: border-box; /*todos os elementos tem o tamanho "verdadeiro".*/
 }
 
 body {
   font-family: 'Barlow', Arial, Helvetica, sans-serif;
-  color: var(--blue);
-  margin: 0;
-  padding-block: 24px;
-  min-height: 100vh;
+  color: var(--azul);
 }
 
 h1,
@@ -67,7 +62,6 @@ h3 {
 
 h1 {
   font-size: 3rem;
-  font-size: clamp(3rem, 2.111111111111111rem + 1.8518518518518516vw, 3.5rem);
   line-height: 1;
   max-width: 18ch;
 }
@@ -82,24 +76,21 @@ h3 {
 
 p {
   font-size: 1rem;
-  font-size: clamp(1rem,
-      0.9431818181818182rem + 0.24242424242424243vw,
-      1.125rem);
   line-height: 1.625;
-  color: var(--blue-lt);
+  color: var(--azul-claro);
   max-width: 45ch;
   margin: 0;
 }
 
-p.small {
+p.descricaop {
   font-size: 1rem;
 }
 
-p.description {
-  font-size: 1.5rem;
+p.descricao {
+  font-size: 1.4rem;
 }
 
-p.description.small {
+p.subdescricao {
   font-size: 1.2rem;
 }
 
@@ -111,7 +102,7 @@ p>strong {
   font-weight: 700;
 }
 
-strong.caps {
+strong.maiuscula {
   text-transform: uppercase;
 }
 
@@ -142,40 +133,32 @@ button:hover {
   transition-property: background-color, color;
 }
 
-.button.blue {
-  background-color: var(--gray-lt);
+.button.branco {
+  background-color: var(--cinza-claro);
   color: #044dbb;
 }
 
-.button.blue:hover {
-  background-color: var(--blue);
-  color: var(--white);
+.button.branco:hover {
+  background-color: var(--azul);
+  color: var(--branco);
 }
 
-.button.orange {
-  background-color: var(--blue);
-  color: var(--white);
+.button.azul {
+  background-color: var(--azul);
+  color: var(--branco);
 }
 
-.button.orange:hover {
+.button.azul:hover {
   background-color: #044dbb;
-  color: var(--white);
+  color: var(--branco);
 }
 
 picture {
   border-radius: 20px;
-  overflow: hidden;
+  overflow: hidden; /*oculta o que ultrapassar as bordas*/
 }
 
-picture.flush-left {
-  border-radius: 0 20px 20px 0;
-}
-
-picture.flush-right {
-  border-radius: 20px 0 0 20px;
-}
-
-.grid-main {
+.grid-divisao {
   display: grid;
   grid-template-columns:
     4px repeat(3, calc((100% - 48px - 20px * 2) / 3)) 4px;
@@ -193,103 +176,83 @@ picture.flush-right {
   justify-self: end;
 }
 
-.hero {
-  padding-block: var(--space-med) var(--space-sm);
-  row-gap: var(--space-med);
+.corpo {
+  padding-block: var(--espaco-medio) var(--espaco-pequeno);
+  row-gap: var(--espaco-medio);
 }
 
-.hero-text {
-  grid-column: 2 / -2;
+.corpo-texto {
+  grid-column: 2 / 8;
   display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: repeat(3, auto);
+  grid-template-columns: auto 1fr; /*divide em duas colunas, uma com tamanho automático e a outra com uma fração do espaço disponível*/
+  grid-template-rows: repeat(3, auto); /*divide o grid em 3 linhas, com tamanho adaptativo aos elementos*/
   gap: 32px;
   align-items: center;
 }
 
-.hero-text>* {
+.corpo-texto>* {
   grid-column: 1 / -1;
 }
 
-.hero-text .button,
-.hero-text .info {
-  grid-column: span 1;
+.corpo-texto .button,
+.corpo-texto .complemento {
+  grid-column: span 1; /*ocupa apenas 1 coluna no grid de corpo-texto*/
 }
 
-.hero-image {
-  grid-column: 2 / -1;
-  border-radius: 20px 0 0 20px;
-}
-
-.hero-image img {
-  height: 20.6875rem;
+.corpo-imagem img {
+  height: 15rem;
   object-position: left center;
 }
 
-.gray-block {
+.bloco-de-detalhe {
   display: none;
   height: 240px;
   border-radius: 20px 0 0 20px;
-  background-color: var(--gray-lt);
+  background-color: var(--cinza-claro);
 }
 
-.details {
-  row-gap: var(--space-med);
-  padding-block-start: var(--space-sm);
+.detalhes {
+  row-gap: var(--espaco-medio);
+  padding-block-start: var(--espaco-pequeno);
 }
 
-.details-image {
+.detalhes-imagem {
   align-self: stretch;
 }
 
-.details-image img {
+.detalhes-imagem img {
   width: 100%;
   height: 100%;
 }
 
-.details-image:nth-child(2) {
-  grid-column: 1 / 3;
-  border-radius: 0 20px 20px 0;
-  position: relative;
-}
-
-.details-image:nth-child(2)::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-color: #587eb8;
-  opacity: 0.9;
-  mix-blend-mode: multiply;
-}
-
-.details-image:nth-child(3) {
+.detalhes-imagem:nth-child(3) {
   grid-column: 3 / -2;
 }
 
-.details-text {
+.detalhes-texto {
   grid-column: 2 / -2;
-  text-align: center;
+  text-align: left;
   display: flex;
   gap: 32px;
   flex-direction: column;
   align-items: center;
 }
 
-.features {
-  row-gap: var(--space-lg);
-  padding-block-start: var(--space-med);
+.servicos {
+  row-gap: var(--espaco-grande);
+  padding-block-start: var(--espaco-medio);
   /*adiciona preenchimento (espaço interno)
     no início do bloco em um elemento, no caso, é o espaço antes da seção de features.*/
 }
 
-.feature {
+.servico {
   grid-column: 2 / span 3;
   display: grid;
   justify-items: center;
   text-align: center;
 }
 
-.feature .icon {
+.servico .icone {
   width: 4.0625rem;
   height: 4.0625rem;
   margin-block-end: 48px;
@@ -299,161 +262,93 @@ picture.flush-right {
   place-items: center;
 }
 
-.feature .icon img {
+.servico .icone img {
   width: 2rem;
   height: 2rem;
   object-fit: contain;
 }
 
-.feature h3 {
+.servico h3 {
   margin-block-end: 24px;
 }
 
 footer {
   text-align: center;
-  padding-block-start: var(--space-lg);
+  padding-block-start: var(--espaco-grande);
 }
 
 footer>p {
   max-width: none;
 }
 
-/* MEDIA QUERIES */
-
-/* 700px */
-@media (width >=43.75em) {
-  :root {
-    --space-sm: 40px;
-    --space-med: 72px;
-    --space-lg: 140px;
-  }
-
-  body {
-    padding-block: 40px;
-  }
-
-  .button {
-    padding: 16px 26px;
-  }
-
-  .grid-main {
-    display: grid;
-    grid-template-columns:
-      10px repeat(6, calc((100% - 80px - 30px * 5) / 6)) 10px;
-    column-gap: 30px;
-  }
-
-  .hero-text {
-    grid-column: 2 / 6;
-  }
-
-  .hero-image {
-    grid-column: 6 / -1;
-  }
-
-  .hero-image img {
-    height: 26.5625rem;
-  }
-
-  .details-image:nth-child(2) {
-    grid-column: 2 / 4;
-    border-radius: 20px;
-  }
-
-  .details-image:nth-child(3) {
-    grid-column: 4 / -2;
-  }
-
-  .details-text {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    text-align: left;
-  }
-
-  .feature {
-    justify-items: start;
-    text-align: left;
-    /* max-width: 17.5625rem; */
-  }
-
-  .feature:nth-child(even) {
-    grid-column: 5 / span 3;
-  }
-
-  .feature h3 {
-    max-width: 14ch;
-  }
-}
-
 /* 1200px */
 @media (width >=75em) {
   :root {
-    --space-lg: 160px;
+    --espaco-grande: 160px;
   }
 
   body {
     padding-block: 55px;
   }
 
-  .grid-main {
+  .grid-divisao {
     display: grid;
     grid-template-columns:
       1fr repeat(12, calc((69.375rem - 30px * 11) / 12)) 1fr;
     gap: 30px;
   }
 
-  .hero-text {
+  .corpo-texto {
     grid-column: 2 / 8;
     column-gap: 32px;
   }
 
-  .hero-text .info {
+  .corpo-texto .complemento {
     justify-self: start;
   }
 
-  .hero-image {
+  .corpo-imagem {
     grid-column: 8 / -2;
     border-radius: 20px;
   }
 
-  .hero-image img {
+  .corpo-imagem img {
     height: 30rem;
   }
 
-  .gray-block {
+  .bloco-de-detalhe {
     display: block;
     grid-column: -2 / -1;
     align-self: start;
   }
 
-  .details .gray-block {
+  .detalhes .bloco-de-detalhe {
     grid-column: 1 / 2;
     border-radius: 0 20px 20px 0;
     align-self: end;
   }
 
-  .details-image:nth-child(2) {
+  .detalhes-imagem:nth-child(2) {
     grid-column: 2 / 5;
     border-radius: 20px;
   }
 
-  .details-image:nth-child(3) {
+  .detalhes-imagem:nth-child(3) {
     grid-column: 5 / 10;
   }
 
-  .details-text {
+  .detalhes-texto {
     grid-column: 10 / -2;
     flex-direction: column;
     /*define que os itens serão alinhados verticalmente, no caso a headline e a descrição*/
   }
 
-  .feature,
-  .feature:nth-child(even) {
+  .servico,
+  .servico:nth-child(even) {
     grid-column-start: auto;
   }
 
-  .feature:nth-child(1) {
+  .servico:nth-child(1) {
     grid-column-start: 2;
   }
 }
