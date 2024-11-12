@@ -3,46 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de IMCt</title>
+    <title>Dados do recruta</title>
     <script type="text/javascript">
-        const calculaIMC = () => {
-            const altura = document.IMCForm.elements["altura"].value;
-            const peso = document.IMCForm.elements["peso"].value;
+        // Função que será chamada quando o formulário for enviado
+        const recrutaDados = (event) => {
+            event.preventDefault(); // Impede o envio do formulário e a recarga da página
 
-            const imc = peso / (altura * altura);   
+            // Captura os dados do formulário
+            const nome = document.Recruta.elements["nome"].value;
+            const sobrenome = document.Recruta.elements["sobrenome"].value;
+            const estudo = document.Recruta.elements["estudo"].value;
+            const nascimento = document.Recruta.elements["nascimento"].value;
 
-            if (imc<18.5) {
-                alert("voce ta abaixo do peso");
-            }
-            else if (imc>18.5 && imc<24.9) {
-                alert("voce ta normal");
-            }
-            else if  (imc>24.9 && imc<29.9) {
-                alert("ta osso");
-            }
-            else if (imc>29.9 && imc<39.9) {
-                alert ("vixe");
-            }
-            else alert ("ta complicado");
+            // Cria um novo parágrafo para exibir os dados
+            var p = document.createElement("p");
 
+            // Adiciona os dados no texto do parágrafo
+            p.textContent = "Nome: " + nome + ", Sobrenome: " + sobrenome + ", Campo de Estudo: " + estudo + ", Data de Nascimento: " + nascimento;
+
+            // Adiciona o parágrafo criado na área de respostas
+            document.getElementById("respostas").appendChild(p);
         }
 
+        // Adiciona o ouvinte de evento para o formulário quando a página for carregada
+        window.onload = () => {
+            document.getElementById("Recruta").addEventListener("submit", recrutaDados);
+        };
     </script>
 </head>
 <body>
-    <form id="IMCForm" name="IMCForm" action="#">
-        <label for="altura">Insira a altura</label>
-        <input type="text" name="altura" id="altura">
+    <form id="Recruta" name="Recruta">
+        <label for="nome">Insira o nome</label>
+        <input type="text" name="nome" id="nome" required>
         <br>
 
-
-        <label for="peso">Insira o peso</label>
-        <input type="text" name="peso" id="peso">
+        <label for="sobrenome">Insira o sobrenome</label>
+        <input type="text" name="sobrenome" id="sobrenome" required>
         <br>
 
+        <label for="estudo">Insira o campo de estudo</label>
+        <input type="text" name="estudo" id="estudo" required>
+        <br>
 
-        <input type="submit" value="Calcular" onclick="calculaIMC()">
+        <label for="nascimento">Insira a data de nascimento</label>
+        <input type="text" name="nascimento" id="nascimento" required>
+        <br>
 
+        <input type="submit" value="Enviar">
     </form>
+
+    <div id="respostas">
+        <h3>Esses foram os dados enviados pelo recruta:</h3>
+    </div>
 </body>
 </html>
