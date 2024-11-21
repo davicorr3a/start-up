@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Desenvolvedores</title>
+</head>
+<body>
+  <h1>Atividade cadastro devs</h1>
+  <form id="devForm">
+    <label for="devName">Digite seu nome completo:</label>
+    <input type="text" id="devName" required>
+    <button type="button" id="addTech">Adicionar linguagem</button>
+    <div id="techList"></div>
+    <br>
+    <button type="submit" id="registerDev">Faça o cadastro</button>
+  </form>
+
+  <script>
+    const devForm = document.getElementById('devForm');
+    const devNameInput = document.getElementById('devName');
+    const addTechButton = document.getElementById('addTech');
+    const techList = document.getElementById('techList');
+
+    const devs = []; // Array para armazenar os desenvolvedores cadastrados
+
+    // Adiciona uma nova linha de tecnologia ao formulário
+    addTechButton.addEventListener('click', () => {
+      const techRow = document.createElement('div');
+
+      // Input para nome da tecnologia
+      const techInput = document.createElement('input');
+      techInput.type = 'text';
+      techInput.placeholder = 'Tecnologia';
+      techInput.required = true;
+
+      // Grupo de botões radio para tempo de experiência
+      const radioGroup = document.createElement('div');
+      ['0-2 anos', '3-4 anos', '5+ anos'].forEach((label, index) => {
+        const radioLabel = document.createElement('label');
+        const radioInput = document.createElement('input');
+        radioInput.type = 'radio';
+        radioInput.name = `experience-${Date.now()}`; // Nome único para o grupo
+        radioInput.value = label;
+        radioInput.required = true;
+        radioLabel.appendChild(radioInput);
+        radioLabel.appendChild(document.createTextNode(label));
+        radioGroup.appendChild(radioLabel);
+      });
+
+      // Botão de remover linha
+      const removeButton = document.createElement('button');
+      removeButton.type = 'button';
+      removeButton.textContent = 'Remover';
+      removeButton.addEventListener('click', () => techRow.remove());
+
+      // Adiciona os elementos à linha
+      techRow.appendChild(techInput);
+      techRow.appendChild(radioGroup);
+      techRow.appendChild(removeButton);
+
+      techList.appendChild(techRow);
+    });
+
+    // Cadastro do desenvolvedor
+    devForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const devName = devNameInput.value;
+      const technologies = [];
+
+      // Percorre todas as linhas de tecnologia
+      const techRows = techList.querySelectorAll('div');
+      techRows.forEach(row => {
+        const techName = row.querySelector('input[type="text"]').value;
+        const experience = row.querySelector('input[type="radio"]:checked').value;
+        technologies.push({ techName, experience });
+      });
+
+      // Adiciona o desenvolvedor ao array
+      devs.push({ devName, technologies });
+
+      // Exibe no console e reseta o formulário
+      console.log('Desenvolvedores cadastrados:', devs);
+      devForm.reset();
+      techList.innerHTML = ''; // Limpa a lista de tecnologias
+    });
+  </script>
+</body>
+</html>
