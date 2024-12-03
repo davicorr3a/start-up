@@ -1,3 +1,3 @@
 const dayjs = require('dayjs')
 
-alert(`Hoje é: ${dayjs().format("DD/MM/YYYY")}`)
+alert(`Hoje estamos na data: ${dayjs().format("DD/MM/YYYY")}`)
